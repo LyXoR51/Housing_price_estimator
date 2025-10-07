@@ -1,4 +1,4 @@
-# Project Final - Est'immo : Real Estate Price Estimator
+# Est'immo : Real Estate Price Estimator
 
 ## Context 📇
 
