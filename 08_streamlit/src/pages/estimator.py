@@ -8,9 +8,7 @@ from utils.common import write_on_db
 import pandas as pd
 
 #####   DATA &  VARIABLES  #####
-#FASTAPI_URL = os.getenv("FASTAPI_URL")
-FASTAPI_URL = "https://lyx51-fastapi-housing-price-estimator.hf.space/predict"
-
+FASTAPI_URL = os.getenv("FASTAPI_URL")
 
 #####   APP  #####
 st.title("Estimator")
