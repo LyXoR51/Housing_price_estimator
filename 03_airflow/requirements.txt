@@ -1,0 +1,7 @@
+ccxt==1.85.*
+sqlalchemy
+pandas
+mlflow
+pandera<0.16.0
+evidently
+pydantic

@@ -1,0 +1,6 @@
+data/
+00_delivrables/
+00_work_dir/
+logs/
+secrets/
+airflow/

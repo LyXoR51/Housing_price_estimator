@@ -1,0 +1,15 @@
+name: ml_workflow_test
+
+docker_env:
+  image: lyxor/housing_ml
+
+entry_points:
+  main:
+    parameters:
+      file_key: {type: str}
+    environment:
+      - MLFLOW_TRACKING_URI
+      - MLFLOW_EXPERIMENT_ID
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+    command: "python app/train.py --file_key {file_key}"
