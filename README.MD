@@ -1,5 +1,12 @@
 # Est'immo : Real Estate Price Estimator
 
+## The app
+You can directly access to:
+* [Streamlit](https://lyx51-housing-price-estimator-streamlit.hf.space) : App and architecture
+* [Mlflow training](https://lyx51-mlflow.hf.space/#/experiments/2/runs/801f74159f8a4c6d98a88f8c8310977c)
+* [FastAPI](https://lyx51-Housing-Price-Estimator-FastAPI.hf.space/docs#/)
+* [Video of the app](https://share.vidyard.com/watch/jfmZxQUhsKxLb5x3fkfE2H)
+
 ## Context 📇
 
 Est’Immo is a platform designed for **real estate agencies** to help them estimate property prices.
@@ -40,14 +47,6 @@ With Est’Immo, **real estate agents** can:
 * Reduce the average time on market by suggesting optimal prices
 * Enhance their expertise with a modern, data-driven tool
 * Stand out from competitors by offering a more professional service
-
-
-## The app
-You can directly access to:
-* [Streamlit](https://lyx51-housing-price-estimator-streamlit.hf.space) : App and architecture
-* [Mlflow training](https://lyx51-mlflow.hf.space/#/experiments/2/runs/801f74159f8a4c6d98a88f8c8310977c)
-* [FastAPI](https://lyx51-Housing-Price-Estimator-FastAPI.hf.space/docs#/)
-* [Video of the app](https://share.vidyard.com/watch/jfmZxQUhsKxLb5x3fkfE2H)
 
 ## Architecture
 
