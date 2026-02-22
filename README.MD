@@ -77,18 +77,12 @@ With Est’Immo, **real estate agents** can:
         |   ├── Jenkinsfile
         |   ├── MLproject
         |   └── requirements.txt       
-        ├── 05_Fastapi/
+        ├── 05_FastAPI/
         |   ├── app.py
         |   ├── Dockerfile
         |   ├── README.md
         |   └── requirements.txt
-        ├── 06_jenkins_server/
-        |   └── Dockerfile
-        ├── 07_mlflow_server/
-        |   ├── Dockerfile
-        |   ├── README.md
-        |   └── requirements.txt
-        ├── 08_streamlit/
+        ├── 06_Streamlit/
         |   ├── src/
         |   ├── Dockerfile
         |   ├── README.md
