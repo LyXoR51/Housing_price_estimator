@@ -6,6 +6,11 @@ from typing import Union
 from fastapi import FastAPI, HTTPException
 import os
 
+# for GCP credentials
+from google.cloud import storage
+client = storage.Client()
+
+
 description = """
 Housing Prices API provides real-estate predictions.
 **Endpoints:**
