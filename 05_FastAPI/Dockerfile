@@ -1,23 +1,11 @@
-FROM continuumio/miniconda3
+FROM python:3.11-slim
 
-RUN apt-get update -y 
-RUN apt-get install nano unzip
-RUN apt-get install -y python3.10
-RUN apt install curl -y
+WORKDIR /app
 
-RUN useradd -m -u 1000 user
-USER user
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH
+COPY app.py .
 
-WORKDIR $HOME/app
-
-RUN curl -fsSL https://get.deta.dev/cli.sh | sh
-
-COPY requirements.txt /dependencies/requirements.txt
-RUN pip install -r /dependencies/requirements.txt
-
-COPY --chown=user . $HOME/app
-
-CMD fastapi run app.py --port $PORT
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT}"]
