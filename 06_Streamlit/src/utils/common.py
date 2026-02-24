@@ -15,10 +15,18 @@ engine = create_engine(POSTGRES_DATABASE, echo=True)
 
 
 def load_db():
+    """Load complete dataset from database, newest first"""
+    try:
+        with engine.connect() as conn:
+            return pd.read_sql(
+                f'SELECT * FROM {TABLE} ORDER BY {ID} DESC',
+                conn,
+                index_col = ID
+            )
+    except Exception as e:
+        print(f"DB load error: {e}")
+        return pd.DataFrame()
 
-    with engine.connect() as conn:
-        database = pd.read_sql(f'SELECT * FROM {TABLE} ORDER BY id DESC', conn, index_col={ID})
-    return database
 
 
 def write_on_db(estimation):
