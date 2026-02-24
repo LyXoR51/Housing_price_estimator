@@ -5,9 +5,9 @@ import os
 
 #####   DATA &  VARIABLES  #####
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # remonte à la racine du projet
-APP_architecture = os.path.join(BASE_DIR, "data", "app_architecture.png")
-DAG_schema = os.path.join(BASE_DIR, "data", "DAG_schema.png")
-prediction_workflow = os.path.join(BASE_DIR, "data", "prediction_workflow.png")
+APP_architecture = os.path.join(BASE_DIR, "images", "app_architecture.png")
+DAG_schema = os.path.join(BASE_DIR, "images", "DAG_schema.png")
+prediction_workflow = os.path.join(BASE_DIR, "images", "prediction_workflow.png")
 
 #####   APP  #####
 st.markdown("""
