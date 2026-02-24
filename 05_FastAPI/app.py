@@ -1,38 +1,39 @@
+import os
+
+if "GCP_KEY" in os.environ:
+    with open("/tmp/gcp_key.json", "w") as f:
+        f.write(os.environ["GCP_KEY"])
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/gcp_key.json"
+
+
 import pandas as pd
-import mlflow.sklearn
 import mlflow
+import mlflow.sklearn
+
 from pydantic import BaseModel
 from typing import Union
 from fastapi import FastAPI, HTTPException
 
-import os, json
-from google.cloud import storage
-from google.oauth2 import service_account
-
-info = json.loads(os.environ["GCP_KEY"])
-credentials = service_account.Credentials.from_service_account_info(info)
-
-client = storage.Client(credentials=credentials)
-
-
 
 description = """
 Housing Prices API provides real-estate predictions.
+
 **Endpoints:**
-* `/predict` — Estimate housing price.
-See `/docs` for request format and examples.
+* /predict — Estimate housing price.
+See /docs for request format and examples.
 """
 
 app = FastAPI(
     title="Housing Prices Estimator",
     description=description,
-    version="1.0.0")
+    version="1.0.0"
+)
 
-# MLflow configuration
-mlflow.set_tracking_uri(os.environ['MLFLOW_TRACKING_URI'])
+
+mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
+
 
 class PredictionFeatures(BaseModel):
-    """Features for housing price prediction."""
     square_feet: Union[int, float]
     num_bedrooms: Union[int, float]
     num_bathrooms: Union[int, float]
@@ -45,19 +46,15 @@ class PredictionFeatures(BaseModel):
     distance_to_center: Union[int, float]
 
 
-@app.post("/predict",tags=["Machine Learning"], response_model=dict)
+@app.post("/predict", tags=["Machine Learning"], response_model=dict)
 async def predict(features: PredictionFeatures):
-    """
-    Predict housing price.
-    
-    **Request**: JSON with all house features.
-    **Response**: `{"prediction": price_predict}`
-    """
     try:
         df = pd.DataFrame([features.model_dump()])
-        MODEL_NAME = os.environ['MODEL_NAME']
+        MODEL_NAME = os.environ["MODEL_NAME"]
         model = mlflow.sklearn.load_model(f"models:/{MODEL_NAME}/latest")
         prediction = model.predict(df)
+
         return {"prediction": float(prediction[0])}
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+        raise HTTPException(status_code=500,detail=f"Prediction failed: {str(e)}")
