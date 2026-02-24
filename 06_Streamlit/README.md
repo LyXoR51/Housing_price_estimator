@@ -1,6 +1,6 @@
 ---
-title: Est Immo
-emoji: 🚀
+title: Housing Price Estimator Streamlit
+emoji: 📺
 colorFrom: red
 colorTo: red
 sdk: docker
