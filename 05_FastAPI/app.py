@@ -4,7 +4,16 @@ import mlflow
 from pydantic import BaseModel
 from typing import Union
 from fastapi import FastAPI, HTTPException
-import os
+
+import os, json
+from google.cloud import storage
+from google.oauth2 import service_account
+
+info = json.loads(os.environ["GCP_KEY"])
+credentials = service_account.Credentials.from_service_account_info(info)
+
+client = storage.Client(credentials=credentials)
+
 
 
 description = """
