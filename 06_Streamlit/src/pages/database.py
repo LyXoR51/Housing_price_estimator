@@ -7,6 +7,11 @@ from utils.common import load_db, update_price
 # Load data
 data = load_db()
 
+# fix waiting db
+if data.empty:
+    st.info("Connecting to the database…")
+    st.stop()
+
 #####   APP  #####
 st.title("Database")
 
@@ -16,14 +21,32 @@ with tab1:
     df = data.loc[data['price_predict'].notnull()]
     st.write("This section displays properties with their **predicted market values**, based on our latest analysis.")
 
-    st.dataframe(df)
+    st.dataframe(
+        df,
+        use_container_width = True,
+        column_config={
+            "created_at": st.column_config.DatetimeColumn(
+                "created_at",
+                format="DD-MM-YYYY H:M:S"
+            )
+        }
+    )
 
 with tab2:
 
     df = data.loc[data['price'].notnull()]
     st.write("This section lists properties that have **already been sold**, along with their final sale prices.")
 
-    st.dataframe(df)
+    st.dataframe(
+        df,
+        use_container_width = True,
+        column_config={
+            "created_at": st.column_config.DatetimeColumn(
+                "created_at",
+                format="DD-MM-YYYY H:M:S"
+            )
+        }
+    )
 
 st.subheader("Update price", divider=True)
 
