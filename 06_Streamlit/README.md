@@ -8,5 +8,5 @@ app_port: 8501
 tags:
 - streamlit
 pinned: false
-short_description: AI-driven platform for real estate price prediction with a full MLOps pipeline: training, CI/CD, monitoring, and deployment. Built with FastAPI, Streamlit, MLflow, Airflow, Docker, Jenkins.
+short_description: AI-driven platform for real estate price prediction with a full MLOps pipeline: training, CI/CD, monitoring, and deployment. Built with FastAPI, Streamlit, MLflow, Airflow, Docker, Jenkins
 ---
