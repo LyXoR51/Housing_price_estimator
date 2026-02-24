@@ -1,20 +1,21 @@
+# GCP CREDENTIAL for HF SPACE
 import os
-
 if "GCP_KEY" in os.environ:
     with open("/tmp/gcp_key.json", "w") as f:
         f.write(os.environ["GCP_KEY"])
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/gcp_key.json"
 
 
+### LIBRARIES ### 
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-
 from pydantic import BaseModel
 from typing import Union
 from fastapi import FastAPI, HTTPException
 
 
+### APP ### 
 description = """
 Housing Prices API provides real-estate predictions.
 
